@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <head>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+      />
+    </head>
+    <title>Myriadn Story App</title>
+  </head>
+  <body>
+    <header>
+      <div class="main-header container">
+        <a class="brand-name" href="#/">Myriadn Story App</a>
+        <nav id="navigation-drawer" class="navigation-drawer">
+          <ul id="nav-list" class="nav-list">
+            <li>
+              <a href="#/" aria-label="Beranda"
+                ><i class="fas fa-home"></i> Beranda</a
+              >
+            </li>
+            <li>
+              <a href="#/add-story" aria-label="Tambah Story"
+                ><i class="fas fa-plus"></i> Tambah Story</a
+              >
+            </li>
+            <li>
+              <a href="#/login" aria-label="Login"
+                ><i class="fas fa-sign-in-alt"></i> Login</a
+              >
+            </li>
+            <li>
+              <a href="#/register" aria-label="Register"
+                ><i class="fas fa-user-plus"></i> Register</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <button id="drawer-button" class="drawer-button">☰</button>
+      </div>
+    </header>
+
+    <main id="main-content" class="main-content"></main>
+  </body>
+</html>

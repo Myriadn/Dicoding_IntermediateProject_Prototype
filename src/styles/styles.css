@@ -1,0 +1,363 @@
+/* Impor Google Fonts untuk tipografi yang lebih menarik */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap");
+
+body {
+  background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+  font-family: "Roboto", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  color: #3498db;
+}
+
+button {
+  background-color: #2ecc71;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #27ae60;
+}
+
+.container {
+  padding-inline: 32px;
+  margin-inline: auto;
+  max-width: 1300px;
+}
+
+/* Styling untuk header navbar */
+header {
+  background: linear-gradient(90deg, #3498db, #2ecc71);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main-header {
+  min-height: 90px;
+  padding-block: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.brand-name {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navigation-drawer {
+  min-height: 100vh;
+  width: 200px;
+  padding: 20px 10px;
+  background-color: #fff;
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  box-shadow: 0 0 4px 2px #00000033;
+  transform: translateX(-100%);
+  transition: transform 350ms;
+  z-index: 9999;
+}
+
+.navigation-drawer.open {
+  transform: translateX(0);
+}
+
+.drawer-button {
+  padding: 8px;
+  border: 0;
+  border-radius: 4px;
+  display: inline-block;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 28px;
+  color: #141e16;
+  cursor: pointer;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px 20px;
+}
+
+.nav-list li a {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none; /* Hilangkan underline */
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-list li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 10px;
+  padding: 8px;
+  background: #2ecc71;
+  color: white;
+  border-radius: 4px;
+  transition: top 0.3s;
+}
+
+.skip-to-content:focus {
+  top: 10px; /* Muncul saat fokus */
+}
+
+/* MAIN */
+.main-content {
+  padding-block: 20px;
+}
+
+#story-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.story-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.story-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.story-item h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #3498db;
+  margin-bottom: 10px;
+}
+
+.story-item p {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  color: #555;
+}
+
+.story-item a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #3498db;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.story-item a:hover {
+  background-color: #2980b9;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button {
+  margin-top: 20px;
+}
+
+.story-detail {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 40px auto;
+  transition: transform 0.3s ease;
+}
+
+.story-detail:hover {
+  transform: translateY(-5px); /* Efek mengangkat saat hover */
+}
+
+/* Styling untuk gambar */
+.story-detail img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 25px;
+  transition: transform 0.3s ease;
+}
+
+.story-detail img:hover {
+  transform: scale(1.02); /* Efek zoom saat hover */
+}
+
+/* Styling untuk judul */
+.story-detail h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2ecc71;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+/* Styling untuk teks deskripsi dan tanggal */
+.story-detail p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+/* Styling untuk peta */
+.story-detail .map-container {
+  margin-top: 30px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#map {
+  height: 300px;
+  width: 100%;
+}
+
+.mini-map {
+  background: #f0f0f0;
+  transition: height 0.3s ease;
+}
+
+.mini-map .leaflet-container {
+  background: transparent !important;
+}
+
+.error {
+  color: #e74c3c;
+  padding: 10px;
+  background: #f8d7da;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    padding-inline: 16px;
+  }
+
+  .main-header {
+    padding-block: 10px;
+  }
+
+  .brand-name {
+    font-size: 1rem;
+  }
+
+  .nav-list li a {
+    padding: 8px 5px;
+  }
+
+  form {
+    padding: 15px;
+  }
+
+  .story-item {
+    padding: 15px;
+  }
+
+  .story-detail {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .story-detail h1 {
+    font-size: 2rem;
+  }
+
+  .story-detail p {
+    font-size: 1rem;
+  }
+
+  .story-detail img {
+    max-height: 250px;
+  }
+
+  .mini-map {
+    height: 120px !important;
+  }
+}
+
+@media screen and (width > 1000px) {
+  .navigation-drawer {
+    min-height: auto;
+    width: auto;
+    padding: 0;
+    background-color: transparent;
+    flex-direction: row;
+    justify-content: space-between;
+    position: static;
+    box-shadow: none;
+    transform: translateX(0);
+  }
+
+  .nav-list {
+    flex-direction: row;
+  }
+
+  .nav-list li a {
+    display: inline-block;
+  }
+
+  .drawer-button {
+    display: none;
+  }
+}
