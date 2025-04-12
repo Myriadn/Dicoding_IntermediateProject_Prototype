@@ -16,18 +16,35 @@ export default class StoryDetailPage {
     }
     const story = response.story;
     return `
-      <!-- Di semua halaman -->
-      <a href="#main-content" class="skip-to-content">Langsung ke konten</a>
-      <section class="container" id="main-content">
+    <section class="story-detail">
+      <div class="detail-header">
         <h1>${story.name}'s Story</h1>
-        <img src="${story.photoUrl}" alt="Foto story oleh ${story.name}">
-        <p>${story.description}</p>
-        <p>${showFormattedDate(story.createdAt)}</p>
-        <div class="map-container">
-            <div id="map"></div>
+        <div class="meta-info">
+          <span class="date">${showFormattedDate(story.createdAt)}</span>
+          <span class="location">
+            <i class="fas fa-map-marker-alt"></i>
+            ${story.lat}, ${story.lon}
+          </span>
         </div>
-      </section>
-    `;
+      </div>
+      
+      <div class="content-grid">
+        <div class="image-container">
+          <img src="${story.photoUrl}" alt="${story.description}">
+        </div>
+        
+        <div class="description-card">
+          <h2>Story Description</h2>
+          <p>${story.description}</p>
+        </div>
+        
+        <div class="map-card">
+          <h2>Story Location</h2>
+          <div id="map"></div>
+        </div>
+      </div>
+    </section>
+  `;
   }
 
   async afterRender() {

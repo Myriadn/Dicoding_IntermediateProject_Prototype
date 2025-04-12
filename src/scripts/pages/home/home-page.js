@@ -10,6 +10,7 @@ export default class HomePage {
     return `
       <a href="#main-content" class="skip-to-content">Langsung ke konten</a>
       <section class="container" id="main-content">
+        
         <h1>Daftar Story</h1>
         <div id="story-list"></div>
       </section>
