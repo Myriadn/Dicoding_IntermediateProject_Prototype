@@ -1,5 +1,6 @@
 // src/scripts/pages/home/home-page.js
 import HomePresenter from "./home-presenter";
+import NavigationHelper from "../../utils/navigation-helper";
 
 export default class HomePage {
   constructor() {
@@ -7,10 +8,16 @@ export default class HomePage {
   }
 
   async render() {
+    // Get username from localStorage
+    const userName = localStorage.getItem("userName");
+
     return `
-      <a href="#main-content" class="skip-to-content">Langsung ke konten</a>
       <section class="container" id="main-content">
-        
+        <div class="welcome-user">
+          <h2><i class="fas fa-user"></i> Selamat datang, ${
+            userName || "User"
+          }!</h2>
+        </div>
         <h1>Daftar Story</h1>
         <div id="story-list"></div>
       </section>
@@ -18,11 +25,17 @@ export default class HomePage {
   }
 
   async afterRender() {
+    // Menggunakan NavigationHelper untuk pengaturan navigasi
+    NavigationHelper.setupAuthenticatedNavigation();
+
+    // Load stories
     this.presenter.loadStories();
   }
 
   displayStories(stories) {
     const container = document.getElementById("story-list");
+    if (!container) return;
+
     container.innerHTML = stories
       .map(
         (story) => `
@@ -32,6 +45,9 @@ export default class HomePage {
              loading="lazy">
         <h2>${story.name}</h2>
         <p>${story.description}</p>
+        <p class="created-at"><i class="fas fa-calendar"></i> ${this.formatDate(
+          story.createdAt
+        )}</p>
         ${
           story.lat && story.lon
             ? `<div class="mini-map" 
@@ -47,6 +63,32 @@ export default class HomePage {
 
     // Inisialisasi peta SETELAH DOM di-update
     this.initMiniMaps();
+  }
+
+  showEmptyState() {
+    const container = document.getElementById("story-list");
+    if (!container) return;
+
+    container.innerHTML = `
+      <div class="empty-state">
+        <i class="fas fa-scroll fa-3x"></i>
+        <h3>Belum ada story</h3>
+        <p>Jadilah yang pertama menambahkan story!</p>
+        <a href="#/add-story" class="btn-primary">
+          <i class="fas fa-plus"></i> Tambah Story Baru
+        </a>
+      </div>
+    `;
+  }
+
+  formatDate(dateString) {
+    return new Date(dateString).toLocaleDateString("id-ID", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
   }
 
   initMiniMaps() {
@@ -79,6 +121,8 @@ export default class HomePage {
 
   showError(message) {
     const container = document.getElementById("story-list");
+    if (!container) return;
+
     container.innerHTML = `<p class="error">⛔ ${message}</p>`;
   }
 }

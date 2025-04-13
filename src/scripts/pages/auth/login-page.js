@@ -1,23 +1,35 @@
 import { login } from "../../data/api";
+import NavigationHelper from "../../utils/navigation-helper";
 
 export default class LoginPage {
   async render() {
     return `
-      <a href="#main-content" class="skip-to-content">Skip to content</a>
-      <section class="container" id="main-content">
-        <h1>Login</h1>
-        <form id="login-form">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" required>
-          <button type="submit">Login</button>
-        </form>
+      <section class="auth-container" id="main-content">
+        <div class="auth-card">
+          <h1>Login</h1>
+          <form id="login-form">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-actions">
+              <button type="submit">Login</button>
+              <span>Belum punya akun? <a href="#/register">Daftar</a></span>
+            </div>
+          </form>
+        </div>
       </section>
     `;
   }
 
   async afterRender() {
+    // Menggunakan NavigationHelper untuk pengaturan navigasi
+    NavigationHelper.setupUnauthenticatedNavigation();
+
     const form = document.querySelector("#login-form");
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -26,6 +38,7 @@ export default class LoginPage {
       const response = await login({ email, password });
       if (!response.error) {
         localStorage.setItem("token", response.loginResult.token);
+        localStorage.setItem("userName", response.loginResult.name);
         window.location.hash = "/";
       } else {
         alert(response.message);

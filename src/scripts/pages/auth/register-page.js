@@ -1,25 +1,39 @@
 import { register } from "../../data/api";
+import NavigationHelper from "../../utils/navigation-helper";
 
 export default class RegisterPage {
   async render() {
     return `
-      <a href="#main-content" class="skip-to-content">Skip to content</a>
-      <section class="container" id="main-content">
-        <h1>Register</h1>
-        <form id="register-form">
-          <label for="name">Nama</label>
-          <input type="text" id="name" name="name" required aria-describedby="name-help">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" minlength="8" required>
-          <button type="submit">Register</button>
-        </form>
+      <section class="auth-container" id="main-content">
+        <div class="auth-card">
+          <h1>Register</h1>
+          <form id="register-form">
+            <div class="form-group">
+              <label for="name">Nama</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" minlength="8" required>
+            </div>
+            <div class="form-actions">
+              <button type="submit">Register</button>
+              <span>Sudah punya akun? <a href="#/login">Login</a></span>
+            </div>
+          </form>
+        </div>
       </section>
     `;
   }
 
   async afterRender() {
+    // Menggunakan NavigationHelper untuk pengaturan navigasi
+    NavigationHelper.setupUnauthenticatedNavigation();
+
     const form = document.querySelector("#register-form");
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
